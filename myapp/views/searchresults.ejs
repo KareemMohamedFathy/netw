@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-image: url("background3.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            -webkit-text-stroke: 1px blue;
+        }
+        p1{
+            position: relative;
+            color:green ;
+            font-size: 25px;
+            left: 30px;
+        }
+        p2{
+            position: relative;
+            color:slateblue ;
+            font-size: 15px;
+            left: 95px
+        }
+        p{
+            position: relative;
+            color:slateblue ;
+            font-size: 20px;
+            left: 50px;
+        }
+        a{
+            position: relative;
+            color:blue ;
+            font-size: 15px;
+            left: 30px;
+        }
+        p3{
+            position: relative;
+            color:blue ;
+            font-size: 20px;
+            left: 100px;
+        }
+        .container3 {
+            position: fixed;
+            left: 700px;
+            top: 150px;
+            color: white;
+            width: 300px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        .container1 {
+            position: fixed;
+            left: 100px;
+            top: 150px;
+            color: white;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Search Results</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <form method="POST" action='/search' class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" name="Search" type="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container1">
+        <br><br>
+        <p1> =>The Results for Searching for "<%= results[0] %>":- </p1>
+        <br>
+        <p2> (About  <%= results.length-1 %>  results)</p2>
+        <br><br>
+        <%  if(results.length == 1){%>     
+            <p3 href="#">"Movie is not found"</p3>
+        <%}%>
+        <% for(var i = 1; i < results.length; i++){ %>
+            <p> <%=i%>) <%= results[i] %> 
+            <% if(results[i] == "The Dark Knight (2008)"){%>
+                <a href="/darkknight">(More info)</a>
+                <%}%>
+            <% if(results[i] == "The Conjuring (2013)"){%>
+                <a href="/conjuring">(More info)</a>
+                 <%}%>
+            <% if(results[i] == "Fight Club (1999)"){%>
+                <a href="/fightclub">(More info)</a>
+                <%}%>
+            <% if(results[i] == "The Godfather (1972)"){%>
+                <a href="/godfather">(More info)</a>
+                <%}%>
+            <% if(results[i] == "The Godfather: Part II (1974)"){%>
+                <a href="/godfather2">(More info)</a>
+                <%}%>
+            <% if(results[i] == "Scream (1996)"){%>
+                <a href="/scream">(More info)</a>
+                <%}%>
+            </p>
+        <% } %>
+    </div>
+    <div class="container3">
+            <img id="image" src="/search.png" width="150%" height="150%">
+        </div>
+</body>
